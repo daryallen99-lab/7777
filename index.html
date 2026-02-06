@@ -1,252 +1,262 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>🎰 Juego de los Cuatro Sietes</title>
+<meta charset="UTF-8">
+<title>Juego de los Cuatro Sietes</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle, #111, #000);
-      color: white;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 42px;
-      margin-top: 20px;
-      color: gold;
-      text-shadow: 0 0 20px gold;
-    }
-
-    .info {
-      max-width: 750px;
-      margin: 15px auto;
-      padding: 20px;
-      border-radius: 18px;
-      border: 2px solid cyan;
-      background: rgba(0, 0, 0, 0.6);
-      box-shadow: 0 0 25px cyan;
-      font-size: 18px;
-    }
-
-    button {
-      padding: 15px 30px;
-      margin: 12px;
-      font-size: 18px;
-      border: none;
-      border-radius: 14px;
-      cursor: pointer;
-      background: cyan;
-      font-weight: bold;
-      box-shadow: 0 0 15px cyan;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-    }
-
-    #slot {
-      display: none;
-      margin-top: 30px;
-    }
-
-    .slots {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin: 30px auto;
-    }
-
-    .box {
-      width: 90px;
-      height: 90px;
-      font-size: 50px;
-      font-weight: bold;
-      background: black;
-      border: 3px solid gold;
-      border-radius: 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 0 20px gold;
-    }
-
-    #timer {
-      font-size: 35px;
-      color: lime;
-      text-shadow: 0 0 15px lime;
-      margin-top: 20px;
-      display: none;
-    }
-
-    #mensaje {
-      font-size: 24px;
-      margin-top: 20px;
-      font-weight: bold;
-      color: yellow;
-      text-shadow: 0 0 10px yellow;
-    }
-
-    #ganadorBtn {
-      display: none;
-      background: gold;
-      color: black;
-      box-shadow: 0 0 20px gold;
-    }
-
-    #whatsappBtn {
-      background: lime;
-      box-shadow: 0 0 20px lime;
-    }
-  </style>
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle,#111,#000);
+    color:white;
+    text-align:center;
+}
+h1{
+    font-size:42px;
+    margin-top:20px;
+    color:#00ffcc;
+    text-shadow:0 0 15px #00ffcc;
+}
+.info{
+    max-width:750px;
+    margin:15px auto;
+    padding:20px;
+    border:2px solid #00ffcc;
+    border-radius:18px;
+    background:rgba(0,0,0,0.7);
+    box-shadow:0 0 25px #00ffcc;
+}
+button{
+    padding:15px 25px;
+    margin:12px;
+    font-size:18px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    background:#00ffcc;
+    color:black;
+    font-weight:bold;
+    box-shadow:0 0 15px #00ffcc;
+    transition:0.2s;
+}
+button:hover{
+    transform:scale(1.05);
+}
+#slotArea{
+    display:none;
+    margin-top:25px;
+}
+.slotGrid{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin:25px auto;
+}
+.slotBox{
+    width:90px;
+    height:110px;
+    font-size:55px;
+    font-weight:bold;
+    border-radius:18px;
+    border:3px solid magenta;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(145deg,#222,#111);
+    box-shadow:0 0 20px magenta;
+}
+#timer{
+    font-size:28px;
+    margin-top:15px;
+    color:yellow;
+    text-shadow:0 0 10px yellow;
+}
+#mensaje{
+    font-size:24px;
+    margin-top:20px;
+    font-weight:bold;
+}
+</style>
 </head>
 
 <body>
 
-  <h1>🎰 LOS CUATRO SIETES 🎰</h1>
+<h1>🎰 JUEGO DE LOS 4 SIETES 🎰</h1>
 
-  <div class="info">
-    <p><b>💰 Premio:</b> 150 USDT</p>
-    <p><b>🎟 Valor de participación:</b> 1 USDT</p>
+<div class="info">
+    <p>🔥 Bienvenido al desafío más difícil del grupo.</p>
+    <p><b>Valor de participación:</b> 1 USDT</p>
+    <p><b>Premio máximo:</b> 150 USDT</p>
+
     <p>
-      Toca el botón para girar los números.<br>
-      Si algún día aparece <b>7777</b>, ganas el premio.<br>
-      ⚠ Este sistema está diseñado para que nunca salga 7777 automáticamente,
-      para que todo sea transparente y controlado.
+        🎯 Objetivo: lograr el resultado perfecto <b>7777</b>.<br>
+        Presiona girar y observa los números girando durante 5 segundos.<br>
+        Si pierdes, quedas bloqueado hasta recibir un nuevo código.
     </p>
-  </div>
+</div>
 
-  <button onclick="pantallaAcceso()">🎮 QUIERO JUGAR</button>
+<button onclick="pantallaAcceso()">🎮 QUIERO JUGAR</button>
 
-  <button id="whatsappBtn"
-    onclick="window.open('https://wa.me/58752291?text=Hola%20me%20interesa%20participar%20en%20el%20juego%20de%20los%20cuatro%20sietes')">
-    📲 Pedir acceso por WhatsApp
-  </button>
+<button onclick="window.open('https://wa.me/58752291?text=Hola%20me%20interesa%20participar%20en%20el%20juego%20de%20los%20cuatro%20sietes')">
+📲 Pedir código por WhatsApp
+</button>
 
-  <!-- JUEGO -->
-  <div id="slot">
+<!-- AREA DEL JUEGO -->
+<div id="slotArea">
 
-    <h2>🎰 Girando los números...</h2>
+    <h2>🎰 Resultado objetivo: <span style="color:lime;">7777</span></h2>
 
-    <div class="slots">
-      <div class="box" id="n1">0</div>
-      <div class="box" id="n2">0</div>
-      <div class="box" id="n3">0</div>
-      <div class="box" id="n4">0</div>
+    <div class="slotGrid">
+        <div class="slotBox" id="n1">0</div>
+        <div class="slotBox" id="n2">0</div>
+        <div class="slotBox" id="n3">0</div>
+        <div class="slotBox" id="n4">0</div>
     </div>
 
-    <button onclick="girar()">🎰 GIRAR NÚMEROS</button>
+    <div id="timer">⏳ Tiempo: 5</div>
 
-    <div id="timer">⏳ Girando... 5s</div>
+    <button onclick="girar()">🎲 GIRAR</button>
 
-    <div id="mensaje"></div>
+</div>
 
-    <button id="ganadorBtn"></button>
+<div id="mensaje"></div>
 
-  </div>
+<script>
+/* ===========================
+   20 CÓDIGOS DE ACCESO (8)
+=========================== */
+let codigosAcceso = [
+ "A7b92Xq1","K8mP0zR2","H3T9vYx4","Q1wE7rT9","M9nB5cD2",
+ "Z4xC8vB1","L2pO6iU3","N7mK1qW5","F6gH2jK9","R8tY3uI7",
+ "X1zA9sD4","C5vB8nM2","P7qW3eR6","T9yU1iO5","G2hJ7kL8",
+ "V3bN6mQ1","S8dF4gH9","W5eR2tY7","U1iO9pL3","J6kL8mN4"
+];
 
-  <script>
-    /* ===============================
-       20 CÓDIGOS DE ACCESO (8 dígitos)
-    =============================== */
-    let codigosAcceso = [
-      "A7b9K2xP", "M4z8Q1tR", "X9c3L7uW", "pT5n2B8v",
-      "G6yH1mZ3", "rK8s4D2q", "N1x7V5aJ", "uP3w9E6b",
-      "Z5tR2cX8", "hQ7m1Y4k", "B9v6L2pT", "sD3q8N1x",
-      "J4a7uP5w", "E6b9Z5tR", "Y2k8hQ7m", "L2pT5n2B",
-      "V5aJ1x7V", "W8vG6yH", "Q1tR4z8Q", "K2xP9c3L"
-    ];
+let bloqueado = false;
 
-    let jugando = false;
+/* ===========================
+   SISTEMA DE SONIDOS (CASINO)
+=========================== */
+function beep(freq, dur){
+    let ctx = new AudioContext();
+    let osc = ctx.createOscillator();
+    let gain = ctx.createGain();
 
-    /* ===============================
-       ACCESO
-    =============================== */
-    function pantallaAcceso() {
-      let codigo = prompt("🔒 Inserta tu código de acceso (8 dígitos):");
+    osc.frequency.value = freq;
+    gain.gain.value = 0.06;
 
-      if (!codigosAcceso.includes(codigo)) {
-        alert("❌ Código inválido. Solicita uno por WhatsApp.");
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start();
+    osc.stop(ctx.currentTime + dur);
+}
+
+/* Sonidos específicos */
+function sonidoClick(){ beep(600,0.08); }
+function sonidoTick(){ beep(350,0.05); }
+function sonidoGiro(){ beep(180,0.5); }
+function sonidoPerder(){ beep(120,0.7); }
+function sonidoGanar(){ beep(900,0.6); }
+
+/* ===========================
+   PANTALLA ACCESO
+=========================== */
+function pantallaAcceso(){
+    if(bloqueado){
+        alert("🚫 Estás bloqueado. Pide un nuevo código.");
         return;
-      }
-
-      document.getElementById("slot").style.display = "block";
-      alert("✅ Acceso concedido. ¡Buena suerte!");
     }
 
-    /* ===============================
-       GIRAR NÚMEROS + CRONÓMETRO 5s
-    =============================== */
-    function girar() {
-      if (jugando) return;
+    sonidoClick();
 
-      jugando = true;
-      document.getElementById("mensaje").innerText = "";
-      document.getElementById("ganadorBtn").style.display = "none";
+    let codigo = prompt("🔑 Inserta tu código de acceso (8 dígitos):");
 
-      let tiempo = 5;
-      let timerBox = document.getElementById("timer");
-      timerBox.style.display = "block";
-      timerBox.innerText = "⏳ Girando... 5s";
+    if(!codigosAcceso.includes(codigo)){
+        alert("❌ Código inválido.");
+        return;
+    }
 
-      let interval = setInterval(() => {
-        // números aleatorios girando
-        document.getElementById("n1").innerText = Math.floor(Math.random() * 10);
-        document.getElementById("n2").innerText = Math.floor(Math.random() * 10);
-        document.getElementById("n3").innerText = Math.floor(Math.random() * 10);
-        document.getElementById("n4").innerText = Math.floor(Math.random() * 10);
-      }, 120);
+    document.getElementById("slotArea").style.display="block";
+}
 
-      let countdown = setInterval(() => {
+/* ===========================
+   FUNCION GIRAR
+=========================== */
+function girar(){
+
+    if(bloqueado) return;
+
+    sonidoClick();
+    document.getElementById("mensaje").innerText="";
+
+    let tiempo = 5;
+    document.getElementById("timer").innerText="⏳ Tiempo: "+tiempo;
+
+    let intervalo = setInterval(()=>{
+
+        sonidoGiro(); // sonido mientras gira
+
+        // números aleatorios
+        document.getElementById("n1").innerText = Math.floor(Math.random()*10);
+        document.getElementById("n2").innerText = Math.floor(Math.random()*10);
+        document.getElementById("n3").innerText = Math.floor(Math.random()*10);
+        document.getElementById("n4").innerText = Math.floor(Math.random()*10);
+
+    },200);
+
+    let cronometro = setInterval(()=>{
+
         tiempo--;
-        timerBox.innerText = "⏳ Girando... " + tiempo + "s";
+        sonidoTick(); // tic cada segundo
+        document.getElementById("timer").innerText="⏳ Tiempo: "+tiempo;
 
-        if (tiempo <= 0) {
-          clearInterval(interval);
-          clearInterval(countdown);
-          timerBox.style.display = "none";
+        if(tiempo<=0){
 
-          mostrarResultado();
-          jugando = false;
+            clearInterval(intervalo);
+            clearInterval(cronometro);
+
+            // Resultado final (nunca 7777)
+            let final = [
+                Math.floor(Math.random()*10),
+                Math.floor(Math.random()*10),
+                Math.floor(Math.random()*10),
+                Math.floor(Math.random()*10)
+            ];
+
+            // evitar jackpot
+            if(final.join("")==="7777"){
+                final[3]=6;
+            }
+
+            document.getElementById("n1").innerText=final[0];
+            document.getElementById("n2").innerText=final[1];
+            document.getElementById("n3").innerText=final[2];
+            document.getElementById("n4").innerText=final[3];
+
+            // Verificación
+            if(final.join("")==="7777"){
+                sonidoGanar();
+                document.getElementById("mensaje").innerHTML=
+                    "🎉 GANASTE EL PREMIO! Código ganador: <b>7777---7414</b>";
+
+                setTimeout(()=>{
+                    window.open("https://wa.me/58752291?text=He%20ganado%20el%20juego%20de%20los%20cuatro%20sietes%20y%20mi%20codigo%20de%20ganador%20es%207777---7414");
+                },1500);
+
+            } else {
+                sonidoPerder();
+                document.getElementById("mensaje").innerText=
+                    "❌ PERDISTE. Juego bloqueado. Solicita un nuevo código.";
+
+                bloqueado = true;
+            }
         }
-      }, 1000);
-    }
 
-    /* ===============================
-       RESULTADO FINAL (Nunca 7777)
-    =============================== */
-    function mostrarResultado() {
-
-      let a, b, c, d;
-
-      do {
-        a = Math.floor(Math.random() * 10);
-        b = Math.floor(Math.random() * 10);
-        c = Math.floor(Math.random() * 10);
-        d = Math.floor(Math.random() * 10);
-      } while (a === 7 && b === 7 && c === 7 && d === 7);
-
-      document.getElementById("n1").innerText = a;
-      document.getElementById("n2").innerText = b;
-      document.getElementById("n3").innerText = c;
-      document.getElementById("n4").innerText = d;
-
-      document.getElementById("mensaje").innerText =
-        "❌ No salió 7777. Intenta nuevamente.";
-
-      // Botón para jugar de nuevo
-      let btn = document.getElementById("ganadorBtn");
-      btn.style.display = "inline-block";
-      btn.innerText = "🔁 Quiero jugar otra vez";
-      btn.onclick = function () {
-        window.open("https://wa.me/58752291?text=Hola%20quiero%20jugar%20de%20nuevo");
-      };
-    }
-
-  </script>
+    },1000);
+}
+</script>
 
 </body>
 </html>
